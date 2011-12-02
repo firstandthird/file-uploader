@@ -1,0 +1,28 @@
+{
+  "JAVASCRIPT": {
+    "DIST_DIR": "./dist",
+    "fileup": [
+      "./lib/copyright.js",
+      "./lib/amd-top.js",
+      "./node_modules/framejax/lib/framejax.js",
+      "./lib/fileup.js",
+      "./lib/amd-bottom.js"
+    ]
+  },
+  "JSHINT_OPTS": {
+    "boss": true,
+    "forin": false,
+    "curly": true,
+    "debug": false,
+    "devel": false,
+    "evil": false,
+    "regexp": false,
+    "undef": false,
+    "sub": true,
+    "white": false,
+    "indent": 2,
+    "whitespace": false,
+    "asi": true
+  }
+}
+

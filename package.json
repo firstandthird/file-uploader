@@ -1,0 +1,22 @@
+{
+  "name": "fileup",
+  "description": "cross browser async file upload utility",
+  "version": "0.0.1",
+  "homepage": "https://github.com/jgallen23/fileup",
+  "author": "Greg Allen <@jgaui> (http://jga.me)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jgallen23/fileup.git"
+  },
+  "dependencies": {
+    "framejax": "*"
+  },
+  "devDependencies": {
+    "express": "*",
+    "jade": "*",
+    "connect-form": "*"
+  },
+  "main": "./dist/fileup.js",
+  "keywords": ["ender", "image", "file", "ajax", "upload"]
+
+}
