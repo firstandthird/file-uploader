@@ -13,8 +13,7 @@
   },
   "devDependencies": {
     "express": "*",
-    "jade": "*",
-    "connect-form": "*"
+    "jade": "*"
   },
   "main": "./dist/fileup.js",
   "keywords": ["ender", "image", "file", "ajax", "upload"]
