@@ -4,7 +4,7 @@
     "jquery.imgup": [
       "./lib/copyright.js",
       "./support/jquery.framejax.js",
-      "./lib/fileup.js"
+      "./lib/imgup.js"
     ]
   },
   "JSHINT_OPTS": {

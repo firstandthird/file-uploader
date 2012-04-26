@@ -1,12 +1,12 @@
 {
-  "name": "fileup",
+  "name": "imgup",
   "description": "cross browser async file upload utility",
-  "version": "0.0.1",
-  "homepage": "https://github.com/jgallen23/fileup",
+  "version": "0.1.0",
+  "homepage": "https://github.com/jgallen23/imgup",
   "author": "Greg Allen <@jgaui> (http://jga.me)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jgallen23/fileup.git"
+    "url": "https://github.com/jgallen23/imgup.git"
   },
   "dependencies": {
     "framejax": "*"
