@@ -3,9 +3,11 @@ var path = require('path');
 
 var app = express.createServer();
 
-app.use(express.bodyParser({ uploadDir: '/tmp/uploads', keepExtensions: true }));
-app.use(express.static(path.join(__dirname, '../dist')));
-app.use("/tmp", express.static("/tmp"));
+var uploadPath = path.join(__dirname, 'uploads');
+app.use(express.bodyParser({ uploadDir: uploadPath, keepExtensions: true }));
+app.use(express.static(path.join(__dirname, '../support')));
+app.use(express.static(path.join(__dirname, '../lib')));
+app.use("/uploads", express.static(uploadPath));
 
 app.set("view options", {
   layout: false 
@@ -19,7 +21,7 @@ app.get('/', function(req, res) {
 });
 
 app.post('/', function(req, res) {
-  res.send(req.files.file.path);
+  res.send(req.files.image.path.replace(__dirname, ''));
 });
 
-app.listen(3000);
+app.listen(8001);

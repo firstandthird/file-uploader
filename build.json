@@ -1,12 +1,10 @@
 {
   "JAVASCRIPT": {
     "DIST_DIR": "./dist",
-    "fileup": [
+    "jquery.imgup": [
       "./lib/copyright.js",
-      "./lib/amd-top.js",
-      "./node_modules/framejax/lib/framejax.js",
-      "./lib/fileup.js",
-      "./lib/amd-bottom.js"
+      "./support/jquery.framejax.js",
+      "./lib/fileup.js"
     ]
   },
   "JSHINT_OPTS": {

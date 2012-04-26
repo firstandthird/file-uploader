@@ -2,27 +2,21 @@
 html
   head
     style
-      #progress { display: none; }
-      #complete { display: none; }
-      #btn { width: 200px; height: 200px; border: 1px solid #ccc; background: #f0f0f0}
-      form { background: green; }
+      #btn { width: 200px; height: 200px; border: 1px solid #ccc; background: #f0f0f0; line-height: 200px; }
   body
-    div#progress Uploading...
-    img#complete
     div#btn Click here to upload
+    script(src='jquery.min.js')
+    script(src='jquery.framejax.js')
     script(src='fileup.js')
     script
-      var get = function(selector) {
-        return document.getElementById(selector);
-      }
-      fileUp(get('btn'))
-        .start(function() {
-          get("btn").style.display = "none";
-          get("progress").style.display = "block";
-        })
-        .complete(function(results) {
-          get("progress").style.display = "none";
-          get("complete").style.display = "block";
-          get("complete").setAttribute('src', results);
-          get("btn").style.display = "block";
-        });
+      $('#btn')
+        .imgUp()
+          .on('start', function() {
+            console.log('start');
+          })
+          .on('fileSelect', function() {
+            console.log('file selected');
+          })
+          .on('complete', function() {
+            console.log('complete');
+          })
