@@ -74,6 +74,7 @@
             .attr('src', img);
       };
 
+      el.css('cursor', 'pointer');
 
       var form = $('<form/>')
         .attr({
@@ -103,8 +104,8 @@
       form
         .framejax()
         .on('complete', function(e, results) {
-          console.log('complete', results);
           showComplete(results);
+          el.trigger('complete', results);
         });
 
       el.on('mousemove', function(e) {
@@ -127,7 +128,7 @@
     action: window.location.href,
     method: 'POST',
     postKey: 'image',
-    progressTemplate: '<span class="progress">Uploading...</span>',
+    progressTemplate: '<div class="progress">Uploading...</div>',
     completeTemplate: '<img/>'
   };
 
