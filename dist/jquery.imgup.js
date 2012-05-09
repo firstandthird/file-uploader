@@ -17,7 +17,7 @@
 !function($) {
   var lastId = 0;
   var createiFrame = function(id) {
-    return $('<iframe/>')
+    return $('<iframe name="'+id+'" />')
       .attr({
         id: id,
         name: id,
@@ -110,9 +110,13 @@
       el.on('mousemove', function(e) {
         var h = input.height();
         var w = input.width();
+        if (typeof e.pageY == 'undefined' && typeof e.clientX == 'number' && document.documentElement) {
+          e.pageX = e.clientX + document.documentElement.scrollLeft;
+          e.pageY = e.clientY + document.documentElement.scrollTop;
+        }
         input.css({
-          top: e.offsetY - (h/2),
-          left: e.offsetX - (w - 30)
+          top: e.pageY - (h / 2),
+          left: e.pageX - (w - 30)
         });
       });
     });
