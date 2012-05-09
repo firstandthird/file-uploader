@@ -1,4 +1,9 @@
 
+0.1.2 / 2012-05-09 
+==================
+
+  * set cursor to pointer, trigger on complete, changed progress to div
+
 0.1.1 / 2012-05-09 
 ==================
 
