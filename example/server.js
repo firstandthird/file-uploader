@@ -24,4 +24,6 @@ app.post('/', function(req, res) {
   res.send(req.files.image.path.replace(__dirname, ''));
 });
 
-app.listen(8001);
+var port = process.argv[2] || 8000;
+console.log('Server started on port '+port);
+app.listen(port);
