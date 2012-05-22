@@ -1,6 +1,6 @@
 /*!
   * imgUp 
-  * v0.1.0
+  * v0.2.0
   * https://github.com/jgallen23/imgup
   * copyright JGA 2012
   * MIT License
@@ -94,7 +94,14 @@
           cursor: 'pointer',
           position: 'absolute'
         })
-        .on('change', function() {
+        .on('change', function(e) {
+          var filename = e.target.value;
+          var ext = filename.split('.').pop().toLowerCase();  
+          if ($.inArray(ext, opts.allow) == -1) {
+            alert('Please select a photo with a ' + opts.allow.join(' or ') + ' extension');
+            return;
+          }
+
           el.trigger('fileSelect');
           showProgress();
           form.submit();
@@ -129,7 +136,8 @@
     method: 'POST',
     postKey: 'image',
     progressTemplate: '<div class="progress">Uploading...</div>',
-    completeTemplate: '<img/>'
+    completeTemplate: '<img/>',
+    allow: ['jpg', 'png', 'bmp', 'gif']
   };
 
 }(window.jQuery);

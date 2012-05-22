@@ -1,4 +1,10 @@
 
+0.2.0 / 2012-05-22 
+==================
+
+  * custom port for example server
+  * check file extension before uploading
+
 0.1.2 / 2012-05-09 
 ==================
 
