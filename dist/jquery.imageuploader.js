@@ -1,6 +1,6 @@
 /*!
  * image-uploader - a jQuery plugin to upload images inline
- * v0.3.0
+ * v0.3.1
  * https://github.com/jgallen23/image-uploader
  * copyright JGA 2013
  * MIT License
@@ -8,9 +8,9 @@
 
 (function($) {
 
-  $.fn.imgUp = function(opts) {
+  $.fn.imageUploader = function(opts) {
 
-    opts = $.extend({}, $.fn.imgUp.defaults, opts);
+    opts = $.extend({}, $.fn.imageUploader.defaults, opts);
 
     return this.each(function() {
       var el = $(this);
@@ -83,7 +83,7 @@
 
   };
 
-  $.fn.imgUp.defaults = {
+  $.fn.imageUploader.defaults = {
     action: window.location.href,
     method: 'POST',
     postKey: 'image',

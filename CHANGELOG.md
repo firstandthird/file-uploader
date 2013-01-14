@@ -1,4 +1,11 @@
 
+0.3.1 / 2013-01-14 
+==================
+
+  * [example] updated for express 3.0 and lib changes
+  * [lib] renamed imgUp to imageUploader
+  * [example] added upload folder
+
 0.3.0 / 2013-01-14 
 ==================
 
