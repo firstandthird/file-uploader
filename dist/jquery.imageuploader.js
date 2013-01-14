@@ -1,60 +1,12 @@
 /*!
-  * imgUp 
-  * v0.2.0
-  * https://github.com/jgallen23/imgup
-  * copyright JGA 2012
-  * MIT License
-  */
+ * image-uploader - a jQuery plugin to upload images inline
+ * v0.3.0
+ * https://github.com/jgallen23/image-uploader
+ * copyright JGA 2013
+ * MIT License
+*/
 
-/*!
-  * jquery.framejax 
-  * v0.1.1
-  * https://github.com/jgallen23/framejax
-  * copyright JGA 2012
-  * MIT License
-  */
-
-!function($) {
-  var lastId = 0;
-  var createiFrame = function(id) {
-    return $('<iframe name="'+id+'" />')
-      .attr({
-        id: id,
-        name: id,
-        width: 0,
-        height: 0
-      })
-      .css('display', 'none')
-      .appendTo('body');
-  };
-
-  $.fn.framejax = function(opts) {
-    return this.each(function() {
-      var el = $(this);
-      if (el[0].tagName != 'FORM')
-        throw new Error('all selectors must be form tags');
-
-      var submit = function() {
-        var id = '__framejax__' + lastId++;
-        var iframe = createiFrame(id);
-
-        iframe.on('load', function() {
-          var results = $(this).contents().find('body').html();
-          el.trigger('complete', results);
-          //cleanup
-          iframe.remove();
-        });
-
-        el.attr('target', id);
-      };
-
-      el.on('submit', submit);
-      el.on('framejaxSubmit', submit);
-    });
-  };
-}(window.jQuery);
-
-!function($) {
+(function($) {
 
   $.fn.imgUp = function(opts) {
 
@@ -140,4 +92,4 @@
     allow: ['jpg', 'png', 'bmp', 'gif']
   };
 
-}(window.jQuery);
+})(window.jQuery);

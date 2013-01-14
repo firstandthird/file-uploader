@@ -1,4 +1,11 @@
 
+0.3.0 / 2013-01-14 
+==================
+
+  * [tools] added bower support
+  * [tools] added grunt support
+  * [lib] renamed to image-uploader
+
 0.2.0 / 2012-05-22 
 ==================
 
