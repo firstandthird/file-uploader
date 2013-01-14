@@ -5,12 +5,12 @@ html
       #btn { width: 200px; height: 200px; border: 1px solid #ccc; background: #f0f0f0; line-height: 200px; }
   body
     div#btn Click here to upload
-    script(src='jquery.min.js')
-    script(src='jquery.framejax.js')
-    script(src='imgup.js')
+    script(src='jquery/jquery.js')
+    script(src='framejax/dist/jquery.framejax.js')
+    script(src='jquery.imageuploader.js')
     script
       $('#btn')
-        .imgUp()
+        .imageUploader()
           .on('start', function() {
             console.log('start');
           })
