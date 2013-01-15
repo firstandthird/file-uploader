@@ -9,8 +9,12 @@ html
     script(src='framejax/dist/jquery.framejax.js')
     script(src='jquery.imageuploader.js')
     script
+      var processData = function(data) {
+        console.log('data', data);
+        return data;
+      };
       $('#btn')
-        .imageUploader()
+        .imageUploader({ processData: processData })
           .on('start', function() {
             console.log('start');
           })
