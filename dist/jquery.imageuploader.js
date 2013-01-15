@@ -1,6 +1,6 @@
 /*!
  * image-uploader - a jQuery plugin to upload images inline
- * v0.3.2
+ * v0.3.3
  * https://github.com/jgallen23/image-uploader
  * copyright JGA 2013
  * MIT License
@@ -19,7 +19,8 @@
         el.html(opts.progressTemplate);
       };
 
-      var showComplete = function(img) {
+      var showComplete = function(data) {
+        var img = (opts.processData) ? opts.processData(data) : data;
         el
           .html(opts.completeTemplate)
           .find('img')
@@ -91,6 +92,7 @@
     progressTemplate: '<div class="progress">Uploading...</div>',
     completeTemplate: '<img/>',
     allow: ['jpg', 'png', 'bmp', 'gif'],
+    processData: null,
     zIndex: 2
   };
 

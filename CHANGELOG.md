@@ -1,4 +1,9 @@
 
+0.3.3 / 2013-01-15 
+==================
+
+  * [lib] added processData option to intercept data from server
+
 0.3.2 / 2013-01-15 
 ==================
 
