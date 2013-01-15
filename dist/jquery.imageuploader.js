@@ -1,6 +1,6 @@
 /*!
  * image-uploader - a jQuery plugin to upload images inline
- * v0.3.1
+ * v0.3.2
  * https://github.com/jgallen23/image-uploader
  * copyright JGA 2013
  * MIT License
@@ -44,7 +44,8 @@
         .css({
           opacity: '0',
           cursor: 'pointer',
-          position: 'absolute'
+          position: 'absolute',
+          zIndex: opts.zIndex
         })
         .on('change', function(e) {
           var filename = e.target.value;
@@ -89,7 +90,8 @@
     postKey: 'image',
     progressTemplate: '<div class="progress">Uploading...</div>',
     completeTemplate: '<img/>',
-    allow: ['jpg', 'png', 'bmp', 'gif']
+    allow: ['jpg', 'png', 'bmp', 'gif'],
+    zIndex: 2
   };
 
 })(window.jQuery);
