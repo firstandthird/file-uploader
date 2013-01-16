@@ -1,4 +1,12 @@
 
+0.3.4 / 2013-01-15 
+==================
+
+  * [lib] if nothing returned from server, don't try and drop image
+  * [lib] changed copy on not-allowed file
+  * [example] added jpeg to git ignore
+  * [lib] added jpeg to allow
+
 0.3.3 / 2013-01-15 
 ==================
 
