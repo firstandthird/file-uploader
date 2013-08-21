@@ -7,59 +7,52 @@
 */
 (function($) {
 
-  $.fn.imageUploader = function(opts) {
+  $.declare('imageUploader', {
+    defaults: {
+      action: window.location.href,
+      method: 'POST',
+      postKey: 'image',
+      progressTemplate: '<div class="progress">Uploading...</div>',
+      completeTemplate: '<img/>',
+      allow: ['jpg', 'png', 'bmp', 'gif', 'jpeg'],
+      processData: null,
+      zIndex: 2
+    },
 
-    opts = $.extend({}, $.fn.imageUploader.defaults, opts);
+    init: function() {
+      var self = this;
 
-    return this.each(function() {
-      var el = $(this);
-
-      var showProgress = function() {
-        el.html(opts.progressTemplate);
-      };
-
-      var showComplete = function(data) {
-        var img = (opts.processData) ? opts.processData(data) : data;
-        if (!img) {
-          return;
-        }
-        el
-          .html(opts.completeTemplate)
-          .find('img')
-            .attr('src', img);
-      };
-
-      el.css('cursor', 'pointer');
+      this.el.css('cursor', 'pointer');
 
       var form = $('<form/>')
         .attr({
-          action: opts.action,
-          method: opts.method,
+          action: this.action,
+          method: this.method,
           enctype: 'multipart/form-data'
         })
         .appendTo('body');
 
       var input = $('<input/>')
         .attr({
-          name: opts.postKey,
+          name: this.postKey,
           type: 'file'
         })
         .css({
           opacity: '0',
           cursor: 'pointer',
           position: 'absolute',
-          zIndex: opts.zIndex
+          zIndex: this.zIndex
         })
         .on('change', function(e) {
           var filename = e.target.value;
-          var ext = filename.split('.').pop().toLowerCase();  
-          if ($.inArray(ext, opts.allow) == -1) {
-            alert('Please select a photo with a ' + opts.allow.join(', ') + ' extension');
+          var ext = filename.split('.').pop().toLowerCase();
+          if ($.inArray(ext, self.allow) == -1) {
+            alert('Please select a photo with a ' + self.allow.join(', ') + ' extension');
             return;
           }
 
-          el.trigger('fileSelect');
-          showProgress();
+          self.el.trigger('fileSelect');
+          self.showProgress();
           form.submit();
         })
         .appendTo(form);
@@ -67,11 +60,11 @@
       form
         .framejax()
         .on('complete', function(e, results) {
-          showComplete(results);
-          el.trigger('complete', results);
+          self.showComplete(results);
+          self.el.trigger('complete', results);
         });
 
-      el.on('mousemove', function(e) {
+      this.el.on('mousemove', function(e) {
         var h = input.height();
         var w = input.width();
         if (typeof e.pageY == 'undefined' && typeof e.clientX == 'number' && document.documentElement) {
@@ -83,19 +76,22 @@
           left: e.pageX - (w - 30)
         });
       });
-    });
+    },
 
-  };
+    showProgress: function() {
+      this.el.html(this.progressTemplate);
+    },
 
-  $.fn.imageUploader.defaults = {
-    action: window.location.href,
-    method: 'POST',
-    postKey: 'image',
-    progressTemplate: '<div class="progress">Uploading...</div>',
-    completeTemplate: '<img/>',
-    allow: ['jpg', 'png', 'bmp', 'gif', 'jpeg'],
-    processData: null,
-    zIndex: 2
-  };
+    showComplete: function(data) {
+      var img = (this.processData) ? this.processData(data) : data;
+      if (!img) {
+        return;
+      }
+      this.el
+        .html(this.completeTemplate)
+        .find('img')
+          .attr('src', img);
+    }
 
+  });
 })(window.jQuery);
