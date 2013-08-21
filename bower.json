@@ -1,0 +1,15 @@
+{
+  "name": "image-uploader",
+  "description": "jQuery image upload plugin",
+  "version": "0.3.4",
+  "homepage": "https://github.com/jgallen23/image-uploader/",
+  "license": "MIT",
+  "copyright": "Greg Allen",
+  "main": "dist/image-uploader.js",
+  "dependencies": {
+    "framejax": "0.2.*"
+  },
+  "devDependencies": {
+    "assert": "*"
+  }
+}

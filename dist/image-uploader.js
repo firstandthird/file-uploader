@@ -1,11 +1,10 @@
 /*!
- * image-uploader - a jQuery plugin to upload images inline
+ * image-uploader - jQuery image upload plugin
  * v0.3.4
- * https://github.com/jgallen23/image-uploader
- * copyright JGA 2013
+ * https://github.com/jgallen23/image-uploader/
+ * copyright Greg Allen 2013
  * MIT License
 */
-
 (function($) {
 
   $.fn.imageUploader = function(opts) {
