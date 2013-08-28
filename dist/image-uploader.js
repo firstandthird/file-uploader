@@ -166,6 +166,7 @@
       xhr.upload.onprogress = this.updateProgress;
       xhr.onload = function(event) {
         self.showComplete(this.responseText, this, event);
+        self.el.trigger('complete', this.responseText);
       };
 
       xhr.send(formData);

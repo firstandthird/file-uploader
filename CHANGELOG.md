@@ -1,4 +1,12 @@
 
+n.n.n / 2013-08-28 
+==================
+
+ * Merge branch 'dev'
+ * Release 0.4.0
+ * little bit of cleanup and added over and out events
+ * changed port for grunt connect
+
 0.4.0 / 2013-08-28 
 ==================
 
