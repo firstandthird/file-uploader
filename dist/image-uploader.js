@@ -1,6 +1,6 @@
 /*!
  * image-uploader - jQuery image upload plugin
- * v0.3.4
+ * v0.4.0
  * https://github.com/jgallen23/image-uploader/
  * copyright Greg Allen 2013
  * MIT License
@@ -16,13 +16,27 @@
       completeTemplate: '<img/>',
       allow: ['jpg', 'png', 'bmp', 'gif', 'jpeg'],
       processData: null,
-      zIndex: 2
+      zIndex: 2,
+      dropZone: 'this',
+      updateProgress: function(event) {}
     },
 
     init: function() {
       var self = this;
 
+      this.supportsFileApi = (typeof window.FileReader !== 'undefined');
+
       this.el.css('cursor', 'pointer');
+
+      this.setupFramejax();
+
+      if(this.supportsFileApi) {
+        this.setupFileApi();
+      }
+    },
+
+    setupFramejax: function() {
+      var self = this;
 
       var form = $('<form/>')
         .attr({
@@ -57,13 +71,6 @@
         })
         .appendTo(form);
 
-      form
-        .framejax()
-        .on('complete', function(e, results) {
-          self.showComplete(results);
-          self.el.trigger('complete', results);
-        });
-
       this.el.on('mousemove', function(e) {
         var h = input.height();
         var w = input.width();
@@ -76,13 +83,64 @@
           left: e.pageX - (w - 30)
         });
       });
+
+      form
+        .framejax()
+        .on('complete', function(e, results) {
+          self.showComplete(results);
+          self.el.trigger('complete', results);
+        });
+    },
+
+    setupFileApi: function() {
+      var self = this;
+      if(this.dropZone === 'this') {
+        this.dropZone = this.el;
+      } else {
+        this.dropZone = $(this.dropZone);
+      }
+
+      this.dropZone.bind('dragenter, dragover', function(event){
+        event.stopPropagation();
+        event.preventDefault();
+        event.originalEvent.dataTransfer.dropEffect = 'copy';
+        self.emit('over');
+      });
+
+      this.dropZone.bind('dragleave', function() {
+        self.emit('out');
+      });
+
+      this.dropZone.bind('drop', function(event) {
+        event.stopPropagation();
+        event.preventDefault();
+
+        var file = event.originalEvent.dataTransfer.files[0];
+
+        if(!self.checkType(file)) {
+          //Probably some messaging here about filetype
+          return;
+        }
+
+        self.upload(file);
+      });
+    },
+
+    checkType: function(file) {
+      for(var i = 0, c = this.allow.length; i < c; i++) {
+        if(file.type.indexOf(this.allow[i]) !== -1) {
+          return true;
+        }
+      }
+
+      return false;
     },
 
     showProgress: function() {
       this.el.html(this.progressTemplate);
     },
 
-    showComplete: function(data) {
+    showComplete: function(data, xhrData, event) {
       var img = (this.processData) ? this.processData(data) : data;
       if (!img) {
         return;
@@ -91,6 +149,26 @@
         .html(this.completeTemplate)
         .find('img')
           .attr('src', img);
+    },
+
+    upload: function(file) {
+      var formData = new FormData();
+
+      formData.append('image', file);
+
+      var self = this;
+
+      var xhr = new XMLHttpRequest();
+
+      this.showProgress();
+
+      xhr.open('POST', this.action, true);
+      xhr.upload.onprogress = this.updateProgress;
+      xhr.onload = function(event) {
+        self.showComplete(this.responseText, this, event);
+      };
+
+      xhr.send(formData);
     }
 
   });

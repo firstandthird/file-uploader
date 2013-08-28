@@ -1,4 +1,15 @@
 
+0.4.0 / 2013-08-28 
+==================
+
+  * little bit of cleanup and added over and out events
+  * changed port for grunt connect
+  * Added some basic error checking for filetype and only allow one image.
+  * Added working dragndrop. Needs error handing, file type check, and general cleanup.
+  * Cleaned up code.
+  * Converted to fidel.
+  * [tools] updated build to use latest grunt
+
 0.3.4 / 2013-01-15 
 ==================
 
