@@ -3,6 +3,7 @@ html
   head
     style
       #btn { width: 200px; height: 200px; border: 1px solid #ccc; background: #f0f0f0; line-height: 200px; }
+      #btn.over { border: 1px solid #000; }
   body
     div#btn Click here to upload
     script(src='jquery/jquery.js')
@@ -16,6 +17,12 @@ html
         .imageUploader({ processData: processData })
           .on('start', function() {
             console.log('start');
+          })
+          .on('over', function() {
+            $(this).addClass('over');
+          })
+          .on('out', function() {
+            $(this).removeClass('over');
           })
           .on('fileSelect', function() {
             console.log('file selected');

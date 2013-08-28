@@ -21,7 +21,10 @@ app.get('/', function(req, res) {
 });
 
 app.post('/', function(req, res) {
-  res.send(req.files.image.path.replace(__dirname, ''));
+  //slow file transfers down
+  setTimeout(function() {
+    res.send(req.files.image.path.replace(__dirname, ''));
+  }, 5000);
 });
 
 var port = process.argv[2] || 8000;
