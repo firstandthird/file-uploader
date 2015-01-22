@@ -1,7 +1,7 @@
 {
-  "name": "image-uploader",
-  "description": "jQuery image upload plugin",
-  "version": "0.4.0",
+  "name": "file-uploader",
+  "description": "jQuery file upload plugin",
+  "version": "0.5.0",
   "homepage": "https://github.com/jgallen23/image-uploader/",
   "license": "MIT",
   "copyright": "Greg Allen",
