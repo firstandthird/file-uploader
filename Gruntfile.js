@@ -33,16 +33,16 @@ module.exports = function(grunt) {
       },
       dist: {
         src: [
-          'lib/image-uploader.js'
+          'lib/file-uploader.js'
         ],
-        dest: 'dist/image-uploader.js'
+        dest: 'dist/file-uploader.js'
       },
       full: {
         src: [
           'dist/_bower.js',
-          'lib/image-uploader.js'
+          'lib/file-uploader.js'
         ],
-        dest: 'dist/image-uploader.full.js'
+        dest: 'dist/file-uploader.full.js'
       }
     },
     uglify: {
@@ -50,12 +50,12 @@ module.exports = function(grunt) {
         banner: '<%= meta.banner %>'
       },
       dist: {
-        src: 'dist/image-uploader.js',
-        dest: 'dist/image-uploader.min.js'
+        src: 'dist/file-uploader.js',
+        dest: 'dist/file-uploader.min.js'
       },
       full: {
-        src: 'dist/image-uploader.full.js',
-        dest: 'dist/image-uploader.full.min.js'
+        src: 'dist/file-uploader.full.js',
+        dest: 'dist/file-uploader.full.min.js'
       }
     },
     clean: {

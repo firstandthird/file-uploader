@@ -2,10 +2,10 @@
   "name": "file-uploader",
   "description": "jQuery file upload plugin",
   "version": "0.5.0",
-  "homepage": "https://github.com/jgallen23/image-uploader/",
+  "homepage": "https://github.com/jgallen23/file-uploader/",
   "license": "MIT",
-  "copyright": "Greg Allen",
-  "main": "dist/image-uploader.js",
+  "copyright": "First + Third",
+  "main": "dist/file-uploader.js",
   "dependencies": {
     "framejax": "0.2.*",
     "fidel": "2.*"

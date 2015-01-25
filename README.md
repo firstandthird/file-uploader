@@ -1,12 +1,12 @@
-#image-uploader
+#file-uploader
 
-jQuery image upload plugin
+jQuery file upload plugin
 
 ##Installation
 
 ###Bower
 
-`bower install image-uploader`
+`bower install file-uploader`
 
 ###Manual Download
 

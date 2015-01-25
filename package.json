@@ -1,5 +1,5 @@
 {
-  "name": "image-uploader",
+  "name": "file-uploader",
   "version": "0.0.0",
   "private": true,
   "devDependencies": {
