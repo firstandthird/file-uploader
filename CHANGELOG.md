@@ -1,5 +1,11 @@
+0.5.0 / 2015-01-25 
+==================
 
-n.n.n / 2013-08-28 
+ * Renaming to file-uploader
+ * Adding back the allow array and checking them before submitting the file
+ * Allowing file submissions
+
+0.4.1 / 2013-08-28 
 ==================
 
  * Merge branch 'dev'
