@@ -1,6 +1,6 @@
 /*!
  * file-uploader - jQuery file upload plugin
- * v0.6.0
+ * v0.6.1
  * https://github.com/jgallen23/file-uploader/
  * copyright First + Third 2015
  * MIT License
@@ -296,7 +296,7 @@
         .on('change', function(e) {
           var filename = e.target.value;
 
-          if (!this.checkType(filename)) {
+          if (!self.checkType(filename)) {
             alert('Please select a file with a ' + self.allow.join(', ') + ' extension');
             return;
           }
