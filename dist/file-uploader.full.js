@@ -1,6 +1,6 @@
 /*!
  * file-uploader - jQuery file upload plugin
- * v0.5.0
+ * v0.6.0
  * https://github.com/jgallen23/file-uploader/
  * copyright First + Third 2015
  * MIT License
@@ -243,11 +243,11 @@
 
 (function($) {
 
-  $.declare('imageUploader', {
+  $.declare('fileUploader', {
     defaults: {
       action: window.location.href,
       method: 'POST',
-      postKey: 'image',
+      postKey: 'file',
       progressTemplate: '<div class="progress">Uploading...</div>',
       completeTemplateImage: '<img/>',
       completeTemplateOther: '<p>The file has been uploaded &#x2714;</p>',
@@ -400,7 +400,7 @@
       var self = this;
       var xhr = new XMLHttpRequest();
 
-      formData.append('image', file);
+      formData.append(this.postKey, file);
 
       self.showProgress();
 

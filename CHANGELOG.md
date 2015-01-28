@@ -1,3 +1,11 @@
+
+0.6.0 / 2015-01-28 
+==================
+
+  * updated example
+  * renamed default postKey to file and fixed drag/drop bug
+  * renamed jquery plugin to fileUploader
+
 0.5.0 / 2015-01-25 
 ==================
 
