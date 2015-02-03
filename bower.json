@@ -7,7 +7,7 @@
   "copyright": "First + Third",
   "main": "dist/file-uploader.js",
   "dependencies": {
-    "framejax": "0.2.*",
+    "framejax": "0.3.*",
     "fidel": "2.*"
   },
   "devDependencies": {
