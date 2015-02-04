@@ -1,4 +1,10 @@
 
+0.7.1 / 2015-02-04
+==================
+
+  * Merge pull request #9 from firstandthird/feature/invalid-notice
+  * Added method for onInvalidFileType
+
 0.7.0 / 2015-02-04 
 ==================
 

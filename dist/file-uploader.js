@@ -1,6 +1,6 @@
 /*!
  * file-uploader - jQuery file upload plugin
- * v0.7.0
+ * v0.7.1
  * https://github.com/jgallen23/file-uploader/
  * copyright First + Third 2015
  * MIT License
@@ -24,6 +24,9 @@
       updateProgress: function(event) {},
       onUploadError: function() {
         alert('Error');
+      },
+      onInvalidFileType: function() {
+        alert('Please select a file with a ' + this.allow.join(', ') + ' extension');
       }
     },
 
@@ -65,7 +68,7 @@
           var filename = e.target.value;
 
           if (!self.checkType(filename)) {
-            alert('Please select a file with a ' + self.allow.join(', ') + ' extension');
+            self.onInvalidFileType.apply(self);
             return;
           }
 
@@ -132,7 +135,7 @@
         var file = event.originalEvent.dataTransfer.files[0];
 
         if (!self.checkType(file.name)) {
-          //Probably some messaging here about filetype
+          self.onInvalidFileType.apply(self);
           return;
         }
 
