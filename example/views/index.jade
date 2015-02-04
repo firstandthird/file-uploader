@@ -15,7 +15,7 @@ html
         return data;
       };
       $('#btn')
-        .fileUploader({ processData: processData, postKey: 'image' })
+        .fileUploader({ processData: processData, postKey: 'image', allow: ['jpg'] })
           .on('start', function() {
             console.log('start');
           })
