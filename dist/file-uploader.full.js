@@ -1,6 +1,6 @@
 /*!
  * file-uploader - jQuery file upload plugin
- * v0.6.1
+ * v0.7.0
  * https://github.com/jgallen23/file-uploader/
  * copyright First + Third 2015
  * MIT License
@@ -256,7 +256,11 @@
       processData: null,
       zIndex: 2,
       dropZone: 'this',
-      updateProgress: function(event) {}
+      iframeValidation: null,
+      updateProgress: function(event) {},
+      onUploadError: function() {
+        alert('Error');
+      }
     },
 
     init: function() {
@@ -323,11 +327,14 @@
       });
 
       form
-        .framejax()
+        .framejax({
+          validate: self.iframeValidation
+        })
         .on('complete', function(e, results) {
           self.showComplete(results);
           self.el.trigger('complete', results);
-        });
+        })
+        .on('framejax.error', self.onUploadError.bind(self));
     },
 
     checkType: function(file) {
@@ -409,6 +416,10 @@
       xhr.onload = function(event) {
         self.showComplete(this.responseText, this, event);
         self.el.trigger('complete', this.responseText);
+
+        if (event.currentTarget.status !== 200) {
+          self.onUploadError.apply(self, arguments);
+        }
       };
 
       xhr.send(formData);

@@ -1,4 +1,11 @@
 
+0.7.0 / 2015-02-04 
+==================
+
+  * Using new framejax capabilities
+  * Updating required framejax version
+  * Invoking custom function when upload returns an error
+  
 0.6.1 / 2015-01-28 
 ==================
 
