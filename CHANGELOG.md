@@ -1,4 +1,10 @@
 
+0.7.2 / 2015-02-17
+==================
+
+  * Merge pull request #11 from firstandthird/feature/override-show
+  * Added ability to override showProgress and showComplete
+
 0.7.1 / 2015-02-04
 ==================
 

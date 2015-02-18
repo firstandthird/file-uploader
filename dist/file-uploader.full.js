@@ -1,6 +1,6 @@
 /*!
  * file-uploader - jQuery file upload plugin
- * v0.7.1
+ * v0.7.2
  * https://github.com/jgallen23/file-uploader/
  * copyright First + Third 2015
  * MIT License
@@ -276,6 +276,26 @@
       },
       onInvalidFileType: function() {
         alert('Please select a file with a ' + this.allow.join(', ') + ' extension');
+      },
+      showProgress: function() {
+        this.el.html(this.progressTemplate);
+      },
+      showComplete: function(data) {
+        var extension = this.getExtension(data);
+        var file = (this.processData) ? this.processData(data) : data;
+        var isImage = $.inArray(extension, this.images) > -1;
+
+        if (file) {
+          if (isImage) {
+            this.el
+              .html(this.completeTemplateImage)
+              .find('img')
+              .attr('src', file);
+          }
+          else {
+            this.el.html(this.completeTemplateOther);
+          }
+        }
       }
     },
 
@@ -322,7 +342,7 @@
           }
 
           self.el.trigger('fileSelect');
-          self.showProgress();
+          self.showProgress.apply(self);
           form.submit();
         })
         .appendTo(form);
@@ -347,7 +367,7 @@
           validate: self.iframeValidation
         })
         .on('complete', function(e, results) {
-          self.showComplete(results);
+          self.showComplete.call(self, results);
           self.el.trigger('complete', results);
         })
         .on('framejax.error', self.onUploadError.bind(self));
@@ -392,30 +412,8 @@
       });
     },
 
-    showProgress: function() {
-      this.el.html(this.progressTemplate);
-    },
-
     getExtension: function(file) {
       return file.split('.').pop().toLowerCase();
-    },
-
-    showComplete: function(data) {
-      var extension = this.getExtension(data);
-      var file = (this.processData) ? this.processData(data) : data;
-      var isImage = $.inArray(extension, this.images) > -1;
-
-      if (file) {
-        if (isImage) {
-          this.el
-            .html(this.completeTemplateImage)
-            .find('img')
-            .attr('src', file);
-        }
-        else {
-          this.el.html(this.completeTemplateOther);
-        }
-      }
     },
 
     upload: function(file) {
@@ -425,12 +423,12 @@
 
       formData.append(this.postKey, file);
 
-      self.showProgress();
+      self.showProgress.apply(self);
 
       xhr.open('POST', self.action, true);
       xhr.upload.onprogress = self.updateProgress;
       xhr.onload = function(event) {
-        self.showComplete(this.responseText, this, event);
+        self.showComplete.call(self, this.responseText, this, event);
         self.el.trigger('complete', this.responseText);
 
         if (event.currentTarget.status !== 200) {
