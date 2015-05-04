@@ -1,6 +1,6 @@
 /*!
  * file-uploader - jQuery file upload plugin
- * v0.7.2
+ * v0.8.0
  * https://github.com/jgallen23/file-uploader/
  * copyright First + Third 2015
  * MIT License
@@ -258,6 +258,7 @@
 
   $.declare('fileUploader', {
     defaults: {
+      formId: 'fileUploaderForm',
       action: window.location.href,
       method: 'POST',
       postKey: 'file',
@@ -314,11 +315,15 @@
     setupFramejax: function() {
       var self = this;
 
+      $('#' + this.formId).remove();
+      this.el.off('mousemove');
+
       var form = $('<form/>')
         .attr({
           action: this.action,
           method: this.method,
-          enctype: 'multipart/form-data'
+          enctype: 'multipart/form-data',
+          id: this.formId
         })
         .appendTo('body');
 
@@ -362,6 +367,21 @@
         });
       });
 
+      input.on('mouseenter', function() {
+        clearTimeout(input.data('timer'));
+        if (!input.data('hovering')) {
+          self.el.trigger('fileUploaderMouseIn');
+        }
+
+        input.data('hovering', true);
+      }).on('mouseleave', function() {
+        var timer = setTimeout(function() {
+          self.el.trigger('fileUploaderMouseOut');
+          input.data('hovering', false);
+        }, 500);
+        input.data('timer', timer);
+      });
+
       form
         .framejax({
           validate: self.iframeValidation
@@ -369,6 +389,7 @@
         .on('complete', function(e, results) {
           self.showComplete.call(self, results);
           self.el.trigger('complete', results);
+          self.setupFramejax();
         })
         .on('framejax.error', self.onUploadError.bind(self));
     },
