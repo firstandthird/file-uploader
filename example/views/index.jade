@@ -31,3 +31,9 @@ html
           .on('complete', function() {
             console.log('complete');
           })
+          .on('fileUploaderMouseIn', function() {
+            console.log('hovering');
+          })
+          .on('fileUploaderMouseOut', function() {
+            console.log('not hovering');
+          })
