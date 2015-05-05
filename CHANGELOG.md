@@ -1,4 +1,9 @@
 
+0.8.1 / 2015-05-04
+==================
+
+  * Removing call to reset form since it breaks iframe validation.
+
 0.8.0 / 2015-05-04
 ==================
 

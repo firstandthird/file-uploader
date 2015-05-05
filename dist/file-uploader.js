@@ -1,6 +1,6 @@
 /*!
  * file-uploader - jQuery file upload plugin
- * v0.8.0
+ * v0.8.1
  * https://github.com/jgallen23/file-uploader/
  * copyright First + Third 2015
  * MIT License
@@ -140,7 +140,6 @@
         .on('complete', function(e, results) {
           self.showComplete.call(self, results);
           self.el.trigger('complete', results);
-          self.setupFramejax();
         })
         .on('framejax.error', self.onUploadError.bind(self));
     },
