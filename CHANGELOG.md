@@ -1,4 +1,9 @@
 
+0.9.0 / 2015-05-29
+==================
+
+  * Adding a validate function to allow advanced validations
+
 0.8.1 / 2015-05-04
 ==================
 

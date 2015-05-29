@@ -1,6 +1,6 @@
 /*!
  * file-uploader - jQuery file upload plugin
- * v0.8.1
+ * v0.9.0
  * https://github.com/jgallen23/file-uploader/
  * copyright First + Third 2015
  * MIT License
@@ -18,6 +18,7 @@
       completeTemplateOther: '<p>The file has been uploaded &#x2714;</p>',
       images: ['jpg', 'png', 'bmp', 'gif', 'jpeg'],
       allow: [],
+      validateFunction: null,
       processData: null,
       zIndex: 2,
       dropZone: 'this',
@@ -145,6 +146,9 @@
     },
 
     checkType: function(file) {
+      if(this.validateFunction) {
+        return this.validateFunction.call(this, file);
+      }
       return !this.allow.length || $.inArray(this.getExtension(file), this.allow) !== -1;
     },
 
